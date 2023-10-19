@@ -1,0 +1,93 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e8f5e9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ff5252;
+    color: white;
+    cursor: pointer;
+}
+
+th:hover {
+    background-color: #ff1744;
+}
+
+tr:nth-child(even) {
+    background-color: #ffebee;
+}
+
+tr:hover {
+    background-color: #ffcdd2;
+}
+
+#pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #448aff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2979ff;
+}
+
+button:disabled {
+    background-color: #bbdefb;
+    cursor: not-allowed;
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 992px) {
+    table, th, td {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    table, th, td {
+        font-size: 0.8rem;
+    }
+    
+    button {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    table, th, td {
+        font-size: 0.7rem;
+    }
+}

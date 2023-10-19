@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+h1 {
+    text-align: center;
+    color: #212529;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.1);
+    background-color: #ffc107;
+}
+
+#budget-form {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#budget-form input, #budget-form select {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+#budget-form button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    width: 100px; /* Set a width for the button */
+}
+
+#budget-form button:hover {
+    background-color: #218838;
+}
+
+#budget-display {
+    background-color: #17a2b8;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 0 0 15px 15px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Budget Tracker</h1>
+    <div class="container">
+        <form id="budget-form">
+            <input type="text" id="description" placeholder="Enter income/expense description" required>
+            <input type="number" id="amount" placeholder="Enter amount" required>
+            <select id="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+            <button type="submit">Add</button>
+        </form>
+        <div id="budget-display">
+            <h2>Total Budget: $<span id="total-budget">0</span></h2>
+        </div>
+    </div>
+    <script>
+        document.getElementById('budget-form').addEventListener('submit', function(event) {
+    // Prevent form from submitting normally
+    event.preventDefault();
+  
+    let description = document.getElementById('description').value;
+    let amount = document.getElementById('amount').value;
+    let type = document.getElementById('type').value;
+  
+    let totalBudget = document.getElementById('total-budget');
+  
+    // Depending on whether the type is an income or expense, add or subtract the amount
+    if (type === 'income') {
+        totalBudget.textContent = parseFloat(totalBudget.textContent) + parseFloat(amount);
+    } else if (type === 'expense') {
+        totalBudget.textContent = parseFloat(totalBudget.textContent) - parseFloat(amount);
+    }
+  
+    // Clear the form fields
+    document.getElementById('description').value = '';
+    document.getElementById('amount').value = '';
+});
+
+    </script>
+</body>
+</html>

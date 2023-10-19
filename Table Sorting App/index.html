@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Sorter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th data-type="string" onclick="sortTable(0)">Name</th>
+                <th data-type="number" onclick="sortTable(1)">Age</th>
+                <th data-type="boolean" onclick="sortTable(2)">Correctness</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample data -->
+            <tr><td>Neelesh</td><td>22</td><td>true</td></tr>
+            <tr><td>Gaurav</td><td>24</td><td>false</td></tr>
+            <tr><td>Aditya</td><td>21</td><td>true</td></tr>
+            <tr><td>Vaibhav</td><td>30</td><td>true</td></tr>
+            <tr><td>Ankur</td><td>37</td><td>false</td></tr>
+            <tr><td>Prayrit</td><td>20</td><td>false</td></tr>
+            <tr><td>Rishabh</td><td>23</td><td>false</td></tr>
+            <tr><td>Nancy</td><td>24</td><td>false</td></tr>
+            <tr><td>Prachi</td><td>32</td><td>false</td></tr>
+            <tr><td>Shubhangi</td><td>23</td><td>false</td></tr>
+            <tr><td>Sai</td><td>22</td><td>false</td></tr>
+            
+        </tbody>
+    </table>
+    <!-- Pagination Controls -->
+    <div id="pagination">
+        <button onclick="prevPage()">Previous</button>
+        <button onclick="nextPage()">Next</button>
+    </div>
+    <script>
+      let currentSortColumn = null;
+let currentSortDirection = 1; // 1 for ascending, -1 for descending
+
+function sortTable(column) {
+    const table = document.getElementById("dataTable");
+    const rows = Array.from(table.tBodies[0].rows);
+    const isNumeric = table.tHead.rows[0].cells[column].getAttribute('data-type') === "number";
+
+    // Toggle the sort direction if the column is clicked again
+    if (currentSortColumn === column) {
+        currentSortDirection *= -1;
+    } else {
+        currentSortDirection = 1;
+    }
+    currentSortColumn = column;
+
+    rows.sort((a, b) => {
+    let cellA, cellB;
+
+    if (isNumeric) {
+        cellA = Number(a.cells[column].textContent);
+        cellB = Number(b.cells[column].textContent);
+    } else if (table.tHead.rows[0].cells[column].getAttribute('data-type') === "boolean") {
+      cellA = a.cells[column].textContent === "true" ? 1 : 0;
+      cellB = b.cells[column].textContent === "true" ? 1 : 0;
+
+    } else {
+        cellA = a.cells[column].textContent;
+        cellB = b.cells[column].textContent;
+    }
+
+    return currentSortDirection * (cellA < cellB ? -1 : (cellA > cellB ? 1 : 0));
+});
+
+
+    for (let row of rows) {
+        table.tBodies[0].appendChild(row);
+    }
+}
+
+// For Pagination:
+let currentPage = 1;
+const rowsPerPage = 10; // Adjust as required
+
+function displayPage(page) {
+    const table = document.getElementById("dataTable");
+    const rows = table.tBodies[0].rows;
+    const startIndex = (page - 1) * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+
+    for (let i = 0; i < rows.length; i++) {
+        rows[i].style.display = (i >= startIndex && i < endIndex) ? "" : "none";
+    }
+}
+
+function nextPage() {
+    currentPage++;
+    displayPage(currentPage);
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        displayPage(currentPage);
+    }
+}
+
+// Initial setup
+displayPage(currentPage);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Generator</title>
+    
+    <style>
+        body, h3, p, button {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Main container */
+  .main {
+    text-align: center;
+  }
+  
+  /* Container styles */
+  .container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  #color {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Button styles */
+  #btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #00e676;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #btn:hover {
+    background-color: #00b248;
+  }
+  
+  /* Mobile responsiveness */
+  @media screen and (max-width: 600px) {
+    #color {
+      font-size: 20px;
+    }
+  
+    #btn {
+      font-size: 16px;
+    }
+  }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <h3 id="color">#abcdef</h3>
+            <button id="btn">Click Me</button>
+        </div>
+    </div>
+    <script>
+
+function generateRandomColorCode() {
+    const randomNumber = Math.floor(Math.random() * 16777215);
+    return "#" + randomNumber.toString(16);
+}
+
+function changeColor() {
+    document.addEventListener("DOMContentLoaded", function() {
+        const button = document.getElementById('btn');
+
+        button.addEventListener('click', ()=>{
+            const randomColorCode = generateRandomColorCode();
+            const randomColor = document.getElementById("color");
+            randomColor.innerText = randomColorCode;
+        });
+    });
+}
+
+changeColor();
+
+    </script>
+</body>
+
+</html>

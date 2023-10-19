@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        h1 {
+            color: #0099ff;
+        }
+
+        h2 {
+            color: #0077aa;
+        }
+
+        .info {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background: #eee;
+            padding: 0 10px;
+        }
+
+        .show {
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Neelesh Tiwari</h1>
+        <h2>Software Developer</h2>
+
+        <h3>Skills</h3>
+        <div id="skill1" onclick="toggleInfo('info1')">
+            <p>JavaScript <span style="float:right">&#9656;</span></p>
+        </div>
+        <div class="info" id="info1">
+            <p>3 years of experience with JavaScript.</p>
+        </div>
+        
+        <div id="skill2" onclick="toggleInfo('info2')">
+            <p>HTML & CSS <span style="float:right">&#9656;</span></p>
+        </div>
+        <div class="info" id="info2">
+            <p>5 years of experience with HTML & CSS.</p>
+        </div>
+
+        <h3>Work Experience</h3>
+        <div id="job1" onclick="toggleInfo('info3')">
+            <p>XYZ Corp (2019 - Present) <span style="float:right">&#9656;</span></p>
+        </div>
+        <div class="info" id="info3">
+            <p>Worked on numerous web development projects...</p>
+        </div>
+
+        <div id="job2" onclick="toggleInfo('info4')">
+            <p>ABC Corp (2017 - 2019) <span style="float:right">&#9656;</span></p>
+        </div>
+        <div class="info" id="info4">
+            <p>Worked as a junior web developer...</p>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleInfo(id) {
+            var element = document.getElementById(id);
+            if (element.style.maxHeight){
+                element.style.maxHeight = null;
+                element.previousElementSibling.style.background = "#ffffff";
+                element.previousElementSibling.children[0].children[0].style.transform = "rotate(0deg)";
+            } else {
+                element.style.maxHeight = element.scrollHeight + "px";
+                element.previousElementSibling.style.background = "#dddddd";
+                element.previousElementSibling.children[0].children[0].style.transform = "rotate(90deg)";
+            } 
+        }
+    </script>
+
+</body>
+</html>

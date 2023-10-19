@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Character Counter (Excluding Spaces)</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+      body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #FFD166; /* Bright yellow background */
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+    background-color: #06D6A0; /* Bright green background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    margin: 0 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    resize: vertical;
+    outline: none;
+    background-color: #EF476F; /* Bright pink background for contrast */
+    color: #fff; /* White text color */
+}
+
+textarea::placeholder {
+    color: #ffffffaa; /* Slightly transparent white for placeholder */
+}
+
+p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff; /* White text color */
+}
+
+span {
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <textarea id="textInput" placeholder="Type your text here..."></textarea>
+        <p>Character Count (excluding spaces): <span id="charCount">0</span></p>
+    </div>
+    <script>
+      const textInput = document.getElementById('textInput');
+const charCount = document.getElementById('charCount');
+
+textInput.addEventListener('input', function() {
+    // Count characters excluding spaces
+    const count = textInput.value.split(' ').join('').length;
+    charCount.textContent = count;
+});
+
+    </script>
+</body>
+
+</html>

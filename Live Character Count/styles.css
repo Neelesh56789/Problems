@@ -1,0 +1,63 @@
+/* Reset some default styles for a cleaner look */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(45deg, #FFC3A0, #FFAFBD); /* Gradient background with bright colors */
+    transition: background 0.5s;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for a "frosted glass" look */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #FFF4E6; /* Soft orange background */
+    resize: vertical;
+    transition: background 0.5s;
+}
+
+textarea:focus {
+    background-color: #FFE5D9; /* Lighten background color on focus */
+}
+
+p {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #333; /* Dark gray color */
+}
+
+span {
+    font-weight: bold;
+    color: #FF61A6; /* Bright pink color */
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    textarea {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}

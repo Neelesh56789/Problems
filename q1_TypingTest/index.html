@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Test</title>
+    <style>
+      * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: grey;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centerDiv {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #f37254;
+  border-radius: 10px;
+  background-color: thistle;
+  box-shadow: 0 4px 8px rgba(243, 114, 84, 0.1);
+}
+
+h1 {
+  font-size: 36px;
+  color: black;
+  margin-bottom: 20px;
+}
+.timer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  outline-style: groove;
+  outline-color: blue;
+  outline-width:thick;
+}
+
+h2 {
+  font-size: 18px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  resize: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: whitesmoke;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 8px rgba(5, 196, 107, 0.1);
+}
+
+button:hover {
+  background-color: black;
+}
+
+  </style>
+</head>
+<body>
+    <div class="main">
+        <div class = "centerDiv">
+            <h1>Test the Speed</h1>
+            <h2 id = "msg"> </h2>
+            <textarea id = "mywords" cols = "120" rows="8" placeholder = "Remember, be nice!"> </textarea>
+            <br>
+            <button id = "btn">Start</button>
+        </div>
+
+    </div>
+<script>
+const array = [
+"Boost your coding skills with Coding Ninja! Improve your typing speed and accuracy while mastering the art of programming.",
+
+"Ready to become a coding wizard? Practice your typing speed with Coding Ninja's interactive website and level up your coding game!",
+
+"Calling all aspiring developers! Enhance your coding prowess with Coding Ninja's typing speed website, designed to make you a coding pro.",
+
+"Want to impress employers with your coding skills? Train your fingers with Coding Ninja's typing speed website and stand out in the tech industry.",
+
+"Unlock the secrets of coding efficiency with Coding Ninja's typing speed platform. Type faster, code better, and conquer any programming challenge.",
+
+"Become a coding samurai! Join Coding Ninja's typing speed website and sharpen your coding skills to slice through any coding obstacle.",
+
+"Coding Ninja's typing speed platform: Where speed meets precision. Enhance your coding abilities and accomplish tasks in record time!",
+
+"Tired of bugs slowing you down? Practice coding with Coding Ninja's typing speed website and squash those errors with lightning-fast fingers!",
+
+"Embark on a journey to coding mastery with Coding Ninja's typing speed website. Type like a ninja and code like a pro!",
+
+"Level up your coding game with Coding Ninja's typing speed platform. Are you ready to type your way to coding success?"
+];
+
+const msg = document.getElementById('msg');
+const area = document.getElementById('mywords');
+const button = document.getElementById('btn');
+
+let sTime, eTime;
+
+
+
+
+const play = ()=>{
+    let randomWords = Math.floor(Math.random()*array.length);
+    msg.innerText = array[randomWords];
+    let date = new Date();
+    sTime = date.getTime();
+    btn.innerText = "Done";
+}
+
+button.addEventListener('click', function(){
+    // e.preventDefault();
+    if(this.innerText == 'Start')
+    {
+        area.disabled = false;
+        play();
+    }
+    else if(this.innerText == "Done")
+    {
+        area.disabled = true;
+        btn.innerText = "Start";
+        end();
+    }
+})
+</script>
+</body>
+</html>
